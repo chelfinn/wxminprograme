@@ -1,0 +1,25 @@
+<view class="send"  catchtouchmove="ture">
+  <view class="buy">
+    <view class="pad">
+      <view class="buy_box">
+        <view class="error" bindtap="errorTap">×</view>
+        <image wx:if="{{shopType == 'tobuy'}}" class="img4" src="{{goods_image}}"></image>
+        <image wx:else class="img4" src="{{goods_image}}"></image>
+        <view>
+          <view class="money">价格：<text>￥{{goods_price}}</text></view>
+          <view class="save">库存：{{goods_storage}}件</view>
+          <view class="type">已选择:{{propertyChildNames}}</view>
+        </view>
+      </view>
+      <view class="color_box" wx:for="{{specALLArr}}" wx:key="id" wx:for-index="idx">
+        <view class="color">{{item.name}}</view>
+        <!-- 分类 -->
+        <view class='select'>
+          <view wx:for='{{item.twoData}}' wx:for-item="twoData" wx:key="id">
+            <view class="normal  {{twoData.active ? 'active' : ''}}" bindtap='clickTap' data-propertyid="{{twoData.propertyID}}" data-propertychildid='{{twoData.id}}' data-propertyindex="{{idx}}" data-propertychildindex="{{index}}">{{twoData.name}}</view>
+          </view>
+        </view>
+      </view>      
+    </view>
+  </view>
+</view>
